@@ -11,3 +11,4 @@ Use awesome HNSW method to generate an approximate K-nearest neighbor search whi
 - check_gt.py：查看某一查询对应的groundtruth，以检查真值计算是否正确
 - data_merge.py：输入database.txt格式：photoID（str）+ feature（128 float），输出face_sift_db/query.bin，face_sift_db/query_index.txt    
 **Note:** 本测试中，暴利搜索计算groundtruth采用的是计算向量之间的内积，所得结果越大说明向量之间距离越小，这是因为训练样本是经过归一化以后的结果（可以推倒内积和欧式距离在向量归一化的情况下成负相关）。原程序提供了3种度量距离的方法：
+![](https://github.com/forence/implement-of-HNSW-on-face-sift-feature/blob/master/distance_method.png?raw=true)
