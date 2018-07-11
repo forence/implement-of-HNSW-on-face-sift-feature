@@ -12,3 +12,20 @@ Use awesome HNSW method to generate an approximate K-nearest neighbor search whi
 - data_merge.py：输入database.txt格式：photoID（str）+ feature（128 float），输出face_sift_db/query.bin，face_sift_db/query_index.txt    
 **Note:** 本测试中，暴利搜索计算groundtruth采用的是计算向量之间的内积，所得结果越大说明向量之间距离越小，这是因为训练样本是经过归一化以后的结果（可以推倒内积和欧式距离在向量归一化的情况下成负相关）。原程序提供了3种度量距离的方法：
 ![](https://github.com/forence/implement-of-HNSW-on-face-sift-feature/blob/master/distance_method.png?raw=true)
+为了与暴力搜素的度量方法保持一致，我们采用Inner product的方法，但是需要改变为d=sum(Ai*Bi)
+## 测试：
+![](https://github.com/forence/implement-of-HNSW-on-face-sift-feature/blob/master/result.png?raw=true)
+
+参数设置：
+
+database_num:  411608;  query_num:  10000
+
+efConstruction:  40;  M:  16;  efSearch:  100~900;  k:  1
+
+1~3列分别代表：efSearch，recall，time per query
+
+## 参考:
+
+[HNSW github](https://github.com/nmslib/hnsw)
+
+[HNSW paper](https://arxiv.org/abs/1603.09320)
